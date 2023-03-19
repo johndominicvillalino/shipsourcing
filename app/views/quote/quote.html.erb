@@ -2,8 +2,11 @@
   <div class="py-5 text-center">
     <h2>Ship Source!</h2>
     <p class="lead">We source your shipping!</p>
-    <%= @from %>  <br>
-    <%= @to %>
+    <ul class="list-group col-md-4 m-auto">
+      <li class="list-group-item"> PICKUP:  <mark class="text-muted small bold" > <%= @from %> </mark> <br>
+      </li>
+      <li class="list-group-item">DESTINATION:   <mark class="text-muted small bold">  <%= @to %> </mark></li>
+    </ul>
   </div>
   <div class="row">
     <div class="col-md-4 m-auto">
@@ -22,10 +25,10 @@
                 <h6 class="my-0">Courier Name</h6>
                 <small class="text-muted"><%= price.service_destination.courier.name %></small>
                 <% if price.service_destination.service.delivery_method == 'express' %>
-                  <%= image_tag 'default_logo.png', width: "50px" %>
+                  <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/free-shipping-design-template-62c154107c385e27756564fcf74622fb_screen.jpg?ts=1629452230" width="35px">
                 <% end %>
                 <% if price.service_destination.service.delivery_method == 'standard' %>
-                  <%= image_tag 'nextday.jpeg', width: "35px" %>
+                  <img src='https://www.shutterstock.com/image-vector/next-day-icon-260nw-1288712275.jpg' width="20px">
                 <% end %>
               </div>
               <span class="text-muted"><%= Money.from_amount(price.base_rate).format %></span>
