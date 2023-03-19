@@ -1,0 +1,105 @@
+<%= form_with url: quote_path, method: :get do |form| %>
+  <div class="container">
+    <div class="py-5 text-center">
+      <h2>Ship Source!</h2>
+      <p class="lead">We source your shipping!</p>
+    </div>
+    <div class="row">
+      <div class="col-md-6 order-md-2 mb-4">
+        <div class="accordion" id="">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#deliver_to" aria-expanded="true" aria-controls="collapseOne">
+                Delivery (Destination)
+              </button>
+            </h2>
+            <div id="deliver_to" class="accordion-collapse collapse show " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="needs-validation p-3" novalidate>
+                <div class="row">
+                </div>
+                
+                <div class="mb-3 mt-3">
+                  <label for="address_one_to">Address</label>
+                  <%= form.text_field :address_one_to, class: 'form-control', placeholder: "123 Main St", id: "address_one_to", required: true %>
+                  <div class="invalid-feedback">
+                    Please enter your shipping address.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="address_two_to">Address 2 <span class="text-muted">(Optional)</span></label>
+                  <%= form.text_field :address_two_to, class: 'form-control', placeholder: "123 Main St", id: "address_two_to" %>
+                </div>
+                <div class="mb-3">
+                  <label for="city_to">City</label>
+                  <%= form.text_field :city_to, class: 'form-control', placeholder: "Cebu", id: "city_to", required: true %>
+                </div>
+                <div class="mb-3">
+                  <label for="province_to">Province</label>
+                  <%= form.select(:province_to, @provinces, class: 'custom-select d-block w-100', id: "province_to")  %>
+                </div>
+                <div class="mb-3">
+                  <label for="zip_code_to">Zip Code</label>
+                  <%= form.text_field :zip_code_to, class: 'form-control', placeholder: "6000", id: "zip_code_to", required: true %>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="country_to">Country</label>
+                  <%= form.select(:country_to,['Philippines'], class: 'custom-select d-block w-100') %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 order-md-1 ">
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#deliver_from" aria-expanded="true" aria-controls="collapseOne">
+                Delivery (Pick-up Location)
+              </button>
+            </h2>
+            <div id="deliver_from" class="accordion-collapse collapse show " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="needs-validation p-3" novalidate>
+                <div class="row">
+                </div>
+                <div class="mb-3">
+                  
+                </div>
+                <div class="mb-3">
+                  <label for="address_one_from">Address</label>
+                  <%= form.text_field :address_one_from, class: 'form-control', placeholder: "123 Main St", id: "address_one_from", required: true %>
+                  <div class="invalid-feedback">
+                    Please enter your shipping address.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="address_two_from">Address 2 <span class="text-muted">(Optional)</span></label>
+                  <%= form.text_field :address_two_from, class: 'form-control', placeholder: "123 Main St", id: "address_two_from" %>
+                </div>
+                <div class="mb-3">
+                  <label for="city_from">City</label>
+                  <%= form.text_field :city_from, class: 'form-control', placeholder: "Cebu", id: "city_from", required: true %>
+                </div>
+                <div class="mb-3">
+                  <label for="province_from">Province</label>
+                  <%= form.select(:province_from, @service_pickups_locations, class: 'custom-select d-block w-100', id: "province_from") %>
+                </div>
+                <div class="mb-3">
+                  <label for="zip_code_from">Zip Code</label>
+                  <%= form.text_field :zip_code_from, class: 'form-control', placeholder: "6000", id: "zip_code_from", required: true %>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="country_from">Country</label>
+                  <%= form.select(:country_from,['Philippines'], class: 'custom-select d-block w-100') %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= form.submit "See Pricing", class: 'btn btn-primary btn-lg btn-block mt-3 mb-4' %>`
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<% end %>

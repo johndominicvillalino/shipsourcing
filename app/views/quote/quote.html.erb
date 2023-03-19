@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Ship Source!</h2>
+    <p class="lead">We source your shipping!</p>
+    <%= @from %>  <br>
+    <%= @to %>
+  </div>
+  <div class="row">
+    <div class="col-md-4 m-auto">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <% if @prices.empty? %>
+          <span class="text-muted m-auto"> No Service Available</span>
+        </h4>
+        <ul class="list-group mb-3">
+        <% else %>
+          <span class="text-muted">Shipping Services Available</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <% @prices.each do |price| %>
+            <li class="list-group-item d-flex justify-content-between">
+              <div class="mb-2" >
+                <h6 class="my-0">Courier Name</h6>
+                <small class="text-muted"><%= price.service_destination.courier.name %></small>
+                <% if price.service_destination.service.delivery_method == 'express' %>
+                  <%= image_tag 'default_logo.png', width: "50px" %>
+                <% end %>
+                <% if price.service_destination.service.delivery_method == 'standard' %>
+                  <%= image_tag 'nextday.jpeg', width: "35px" %>
+                <% end %>
+              </div>
+              <span class="text-muted"><%= Money.from_amount(price.base_rate).format %></span>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
